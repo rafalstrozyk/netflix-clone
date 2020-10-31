@@ -26,7 +26,11 @@ const ButtonIcon = ({ type, Icon }) => (
 
 ButtonIcon.propTypes = {
   Icon: PropTypes.element.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
+};
+
+ButtonIcon.defaultProps = {
+  type: 'div',
 };
 
 export default ButtonIcon;

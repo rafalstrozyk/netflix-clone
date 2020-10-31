@@ -23,6 +23,13 @@ const GlobalStyle = createGlobalStyle`
         line-height: ${theme.lineHeight};
         font-family: 'Montserrat', sans-serif;
     }
+
+    a {
+        text-decoration: none;
+        cursor: pointer;
+        color: ${theme.fontColorSecondaryOne};
+        background-color: transparent;
+    }
 `;
 
 export default GlobalStyle;

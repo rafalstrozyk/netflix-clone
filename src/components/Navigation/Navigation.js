@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavigationItem from 'components/Navigation/NavItem';
+import ButtonIcon from 'components/ButtonIcon/ButtonIcon';
+import Logo from 'components/Logo/Logo';
+import AcountMenuItem from 'components/Navigation/AcountMenuItem';
+import { ReactComponent as BellIcon } from 'assets/icons/bell.svg';
+import { ReactComponent as SearchIocon } from 'assets/icons/magnifying-glass.svg';
+import { ReactComponent as CakeIcon } from 'assets/icons/cake.svg';
 
 const PinningHeader = styled.div`
   height: 70px;
@@ -34,11 +40,19 @@ const SecondaryNavigation = styled.div`
   right: 4%;
   top: 0;
   height: 100%;
+
+  > *:not(:last-child) {
+    margin-right: 15px;
+  }
+`;
+
+const StyledLogo = styled(Logo)`
+  margin-right: 5px;
 `;
 
 const Navigation = () => (
   <PinningHeader>
-    <a href="/">Logo</a>
+    <StyledLogo href="/" />
     <PrimaryNavigation>
       <NavigationTab>
         <NavigationItem navigate>Strona główna</NavigationItem>
@@ -57,9 +71,10 @@ const Navigation = () => (
       </NavigationTab>
     </PrimaryNavigation>
     <SecondaryNavigation>
-      <div>NavElement</div>
-      <div>NavElement</div>
-      <div>NavElement</div>
+      <ButtonIcon Icon={SearchIocon} />
+      <ButtonIcon Icon={CakeIcon} type="a" />
+      <ButtonIcon Icon={BellIcon} type="button" />
+      <AcountMenuItem />
     </SecondaryNavigation>
   </PinningHeader>
 );
