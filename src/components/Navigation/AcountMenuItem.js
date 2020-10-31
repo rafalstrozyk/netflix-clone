@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
+import UserAvatar from 'components/UserAvatar/UserAvatar';
 import avatarImage from 'assets/images/user_avatar.jpg';
+import UserDropDown from 'components/Navigation/UserDropDown';
 
 const StyledMenuItem = styled.div`
   display: block;
@@ -10,6 +12,7 @@ const StyledMenuItem = styled.div`
 `;
 
 const StyledDropDownButton = styled.div`
+  cursor: pointer;
   width: 100%;
   display: flex;
   align-items: center;
@@ -41,16 +44,23 @@ const StyledCaret = styled.span`
   border-color: #fff transparent transparent transparent;
 `;
 
+const StyledDropDown = styled(UserDropDown)`
+  position: absolute;
+  top: 45px;
+  right: 0%;
+`;
+
 const AcountMenuItem = () => (
   <StyledMenuItem>
     <StyledDropDownButton>
       <StyledLink href="/">
         <span>
-          <img src={avatarImage} alt="avatar" />
+          <UserAvatar imgUrl={avatarImage} />
         </span>
       </StyledLink>
       <StyledCaret />
     </StyledDropDownButton>
+    <StyledDropDown />
   </StyledMenuItem>
 );
 
