@@ -45,6 +45,10 @@ const StyledListItem = styled.li`
   cursor: pointer;
   display: flex;
   align-items: center;
+  :hover a {
+    text-decoration: underline;
+    outline: 0;
+  }
 
   img {
     margin-right: 8px;
