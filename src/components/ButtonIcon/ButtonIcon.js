@@ -10,6 +10,7 @@ const ButtonIconStyled = styled.div`
   background: transparent;
   padding: 0;
   width: 2rem;
+  outline: none;
 
   svg {
     fill: ${({ theme }) => theme.fontColorSecondaryOne};
@@ -18,19 +19,21 @@ const ButtonIconStyled = styled.div`
   }
 `;
 
-const ButtonIcon = ({ type, Icon }) => (
-  <ButtonIconStyled as={type}>
+const ButtonIcon = ({ type, Icon, onClick }) => (
+  <ButtonIconStyled as={type} onClick={onClick}>
     <Icon />
   </ButtonIconStyled>
 );
 
 ButtonIcon.propTypes = {
-  Icon: PropTypes.element.isRequired,
+  Icon: PropTypes.oneOfType([PropTypes.object, PropTypes.element]).isRequired,
   type: PropTypes.string,
+  onClick: PropTypes.func,
 };
 
 ButtonIcon.defaultProps = {
   type: 'div',
+  onClick: null,
 };
 
 export default ButtonIcon;

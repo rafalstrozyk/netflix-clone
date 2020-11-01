@@ -4,8 +4,8 @@ import NavigationItem from 'components/Navigation/NavItem';
 import ButtonIcon from 'components/ButtonIcon/ButtonIcon';
 import Logo from 'components/Logo/Logo';
 import AcountMenuItem from 'components/Navigation/AcountMenuItem';
+import Search from 'components/Navigation/Search';
 import { ReactComponent as BellIcon } from 'assets/icons/bell.svg';
-import { ReactComponent as SearchIocon } from 'assets/icons/magnifying-glass.svg';
 import { ReactComponent as CakeIcon } from 'assets/icons/cake.svg';
 
 const PinningHeader = styled.div`
@@ -50,33 +50,37 @@ const StyledLogo = styled(Logo)`
   margin-right: 5px;
 `;
 
-const Navigation = () => (
-  <PinningHeader>
-    <StyledLogo href="/" />
-    <PrimaryNavigation>
-      <NavigationTab>
-        <NavigationItem navigate>Strona główna</NavigationItem>
-      </NavigationTab>
-      <NavigationTab>
-        <NavigationItem> Seriale i programy</NavigationItem>
-      </NavigationTab>
-      <NavigationTab>
-        <NavigationItem>Filmy</NavigationItem>
-      </NavigationTab>
-      <NavigationTab>
-        <NavigationItem>Najnowsze</NavigationItem>
-      </NavigationTab>
-      <NavigationTab>
-        <NavigationItem>Moja lista</NavigationItem>
-      </NavigationTab>
-    </PrimaryNavigation>
-    <SecondaryNavigation>
-      <ButtonIcon Icon={SearchIocon} />
-      <ButtonIcon Icon={CakeIcon} type="a" />
-      <ButtonIcon Icon={BellIcon} type="button" />
-      <AcountMenuItem />
-    </SecondaryNavigation>
-  </PinningHeader>
-);
+const Navigation = () => {
+  return (
+    <PinningHeader>
+      <StyledLogo href="/" />
+      <PrimaryNavigation>
+        <NavigationTab>
+          <NavigationItem href="/" navigate>
+            Strona główna
+          </NavigationItem>
+        </NavigationTab>
+        <NavigationTab>
+          <NavigationItem href="/"> Seriale i programy</NavigationItem>
+        </NavigationTab>
+        <NavigationTab>
+          <NavigationItem href="/">Filmy</NavigationItem>
+        </NavigationTab>
+        <NavigationTab>
+          <NavigationItem href="/">Najnowsze</NavigationItem>
+        </NavigationTab>
+        <NavigationTab>
+          <NavigationItem href="/">Moja lista</NavigationItem>
+        </NavigationTab>
+      </PrimaryNavigation>
+      <SecondaryNavigation>
+        <Search />
+        <ButtonIcon Icon={CakeIcon} type="a" />
+        <ButtonIcon Icon={BellIcon} type="button" />
+        <AcountMenuItem />
+      </SecondaryNavigation>
+    </PinningHeader>
+  );
+};
 
 export default Navigation;

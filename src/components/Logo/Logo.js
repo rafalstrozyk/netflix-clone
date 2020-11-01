@@ -14,14 +14,14 @@ const StyledLink = styled.a`
   }
 `;
 
-const Logo = ({ to, height }) => (
-  <StyledLink height={height} href={to}>
+const Logo = ({ href, height }) => (
+  <StyledLink height={height} href={href}>
     <img src={logoImage} alt="Logo" />
   </StyledLink>
 );
 
 Logo.propTypes = {
-  to: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
   height: PropTypes.string,
 };
 

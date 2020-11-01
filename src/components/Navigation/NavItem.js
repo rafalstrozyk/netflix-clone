@@ -25,7 +25,7 @@ const NavItem = ({ href, children, navigate }) => (
 
 NavItem.propTypes = {
   href: PropTypes.string.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
   navigate: PropTypes.bool,
 };
 
