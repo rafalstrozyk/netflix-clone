@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import TransitionTemplate from 'templates/TransitionTemplate';
-import ButtonIcon from 'components/ButtonIcon/ButtonIcon';
+import ButtonIcon from 'components/Buttons/ButtonIcon/ButtonIcon';
 import { ReactComponent as SearchIocon } from 'assets/icons/magnifying-glass.svg';
 
 const StyledSearch = styled.div`
