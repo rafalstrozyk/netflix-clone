@@ -40,17 +40,15 @@ const Search = () => {
   const [isOpen, setIsOpen] = useState(false);
   const inputFocus = useRef(null);
 
-  const onButtonClick = () => {
+  const handleFocus = () => {
     setIsOpen(!isOpen);
-    if (isOpen) {
-      inputFocus.current.focus();
-    }
+    inputFocus.current.focus();
   };
 
   return (
     <TransitionTemplate timeout={400} isOpen={isOpen}>
       <StyledSearch>
-        <StyledButton Icon={SearchIocon} type="button" onClick={onButtonClick} />
+        <StyledButton Icon={SearchIocon} type="button" onClick={handleFocus} />
         <form>
           <input ref={inputFocus} placeholder="Tytuły, osoby, gatunki" type="text" />
         </form>
