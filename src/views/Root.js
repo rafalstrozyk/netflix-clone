@@ -1,11 +1,13 @@
 import React from 'react';
 import GlobalStyle from 'theme/GlobalStyle';
+import Slider from 'components/Slider/Slider';
+import { videos } from 'data';
 
 const Root = () => {
   return (
     <div>
       <GlobalStyle />
-      <h1>Hello Word</h1>
+      <Slider movies={videos} />
     </div>
   );
 };

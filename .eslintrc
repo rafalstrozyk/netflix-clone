@@ -4,12 +4,14 @@
   "env": {
     "jest": true
   },
-  "globals": { "document": true },
+  "globals": { "document": true, "window": true },
   "rules": {
     "import/prefer-default-export": 0,
     "import/no-extraneous-dependencies": 0,
     "import/no-unresolved": 1,
     "react/state-in-constructor": 0,
+    "no-restricted-syntax": 0,
+    "no-plusplus": 0,
     "strict": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js"] }]
   },
