@@ -152,7 +152,7 @@ const Slider = ({ movies }) => {
     setTimeout(() => {
       setLowestVisibleIndex(newIndex);
       setSliderMoving(false);
-      sliderMoveDirection(null);
+      setSliderMoveDirection(null);
     }, 750);
   };
 
@@ -201,7 +201,7 @@ const Slider = ({ movies }) => {
 
     style = {
       transform: translate,
-      transitionDuration: '750ms',
+      transitionDuration: '850ms',
     };
   } else {
     style = {

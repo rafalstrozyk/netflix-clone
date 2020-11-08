@@ -1,14 +1,23 @@
 import React from 'react';
-import GlobalStyle from 'theme/GlobalStyle';
-import Slider from 'components/Slider/Slider';
+import MainTemplate from 'templates/MainTemplate';
+import Navigation from 'components/Navigation/Navigation';
+
+import RowSlider from 'components/RowSlider';
 import { videos } from 'data';
 
 const Root = () => {
   return (
-    <div>
-      <GlobalStyle />
-      <Slider movies={videos} />
-    </div>
+    <MainTemplate>
+      <Navigation />
+      <RowSlider title="Moja Lista" href="/" movies={videos} />
+      <RowSlider title="Moja Lista" href="/" movies={videos} />
+      <RowSlider title="Moja Lista" href="/" movies={videos} />
+      <RowSlider title="Moja Lista" href="/" movies={videos} />
+      <RowSlider title="Moja Lista" href="/" movies={videos} />
+      <RowSlider title="Moja Lista" href="/" movies={videos} />
+      <RowSlider title="Moja Lista" href="/" movies={videos} />
+      <RowSlider title="Moja Lista" href="/" movies={videos} />
+    </MainTemplate>
   );
 };
 

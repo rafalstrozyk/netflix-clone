@@ -16,6 +16,8 @@ const GlobalStyle = createGlobalStyle`
 
     body {
         font-size: 1.6rem;
+        margin: 0;
+        padding: 0;
         font-weight: 300;
         display: block;
         background: ${theme.backColor};
