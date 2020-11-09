@@ -29,7 +29,7 @@ const StyledCard = styled.div`
   }
 `;
 
-const Card = ({ movie: { image, alt, href, width } }) => (
+const Card = ({ movie: { image, alt, href }, width }) => (
   <StyledCard style={{ width: `${width}%` }}>
     <a href={href}>
       <img src={image} alt={alt} />
@@ -39,10 +39,12 @@ const Card = ({ movie: { image, alt, href, width } }) => (
 
 Card.propTypes = {
   movie: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string])),
+  width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 Card.defaultProps = {
   movie: null,
+  width: '100px',
 };
 
 export default Card;

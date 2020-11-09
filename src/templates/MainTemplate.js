@@ -5,14 +5,14 @@ import { theme } from 'theme/theme';
 import GlobalStyle from 'theme/GlobalStyle';
 
 const MainTemplate = ({ children }) => (
-  <div>
+  <>
     <GlobalStyle />
     <ThemeProvider theme={theme}>{children}</ThemeProvider>
-  </div>
+  </>
 );
 
 MainTemplate.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element, PropTypes.array]).isRequired,
 };
 
 export default MainTemplate;

@@ -99,12 +99,7 @@ const Slider = ({ movies }) => {
     const sliderContents = [];
     for (const index of combinedIndex) {
       sliderContents.push(
-        <Card
-          width={100 / itemsInRow}
-          movie={movies[index]}
-          index={index}
-          key={movies[index].id}
-        />,
+        <Card width={95 / itemsInRow} movie={movies[index]} index={index} key={movies[index].id} />,
       );
     }
 
@@ -112,11 +107,7 @@ const Slider = ({ movies }) => {
     if (!sliderHasMoved) {
       for (let i = 0; i < itemsInRow; i++) {
         sliderContents.unshift(
-          <div
-            className="slider-item"
-            style={{ width: `${100 / itemsInRow}%` }}
-            key={`${i}-key`}
-          />,
+          <div className="slider-item" style={{ width: `${95 / itemsInRow}%` }} key={`${i}-key`} />,
         );
       }
     }

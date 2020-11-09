@@ -12,7 +12,9 @@ const PinningHeader = styled.div`
   height: 70px;
   z-index: 2;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0));
-  position: relative;
+  position: fixed;
+  left: 0;
+  right: 0;
   display: flex;
   align-items: center;
   padding: 0 4%;

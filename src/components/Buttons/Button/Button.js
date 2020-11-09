@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { ReactComponent as PlayIcon } from 'assets/icons/controller-play.svg';
 
 const StyledButton = styled.button`
   // hasLabel hasIcon 1.6rem hasIcon and Label 2rem 2.4rem
@@ -74,6 +73,7 @@ const StyledIconWrapper = styled.div`
   height: 2.4rem;
   width: 2.4rem;
   display: inline-block;
+  margin-right: ${({ hasLabel }) => hasLabel && '8px'};
 
   svg {
     height: 100%;
@@ -91,12 +91,8 @@ const StyledLabel = styled.span`
 
 const ButtonPrimary = ({ type, hasLabel, hasIcon, secondary }) => (
   <StyledButton type={type} hasLabel={hasLabel} hasIcon={hasIcon} secondary={secondary}>
-    {hasIcon && (
-      <StyledIconWrapper>
-        <PlayIcon />
-      </StyledIconWrapper>
-    )}
-    {hasLabel && <StyledLabel>Odtwórz</StyledLabel>}
+    {hasIcon && <StyledIconWrapper hasLabel={hasLabel}>{hasIcon}</StyledIconWrapper>}
+    {hasLabel && <StyledLabel>{hasLabel}</StyledLabel>}
   </StyledButton>
 );
 
