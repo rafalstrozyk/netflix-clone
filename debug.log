@@ -1,2 +1,0 @@
-[1107/115923.637:ERROR:directory_reader_win.cc(43)] FindFirstFile: System nie mo¿e odnaleŸæ okreœlonej œcie¿ki. (0x3)
-[1107/180108.606:ERROR:filesystem_win.cc(148)] DeleteFile C:\Users\resob\AppData\Local\Google\Chrome\User Data\Crashpad\reports\a6911e81-6ccf-4935-96f5-24de3658de52.dmp: Proces nie mo¿e uzyskaæ dostêpu do pliku, poniewa¿ jest on u¿ywany przez inny proces. (0x20)

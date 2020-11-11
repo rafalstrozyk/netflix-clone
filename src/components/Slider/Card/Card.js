@@ -29,21 +29,27 @@ const StyledCard = styled.div`
   }
 `;
 
-const Card = ({ movie: { image, alt, href }, width }) => (
-  <StyledCard style={{ width: `${width}%` }}>
-    <a href={href}>
-      <img src={image} alt={alt} />
-    </a>
-  </StyledCard>
-);
+const Card = ({ movie, width }) => {
+  return (
+    <>
+      {movie && (
+        <StyledCard style={{ width: `${width}%` }}>
+          <a href="/">
+            {console.log(movie)}
+            <img src={movie.img} alt={movie.title} />
+          </a>
+        </StyledCard>
+      )}
+    </>
+  );
+};
 
 Card.propTypes = {
-  movie: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string])),
+  movie: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string])).isRequired,
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 Card.defaultProps = {
-  movie: null,
   width: '100px',
 };
 

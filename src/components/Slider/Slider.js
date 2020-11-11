@@ -99,7 +99,7 @@ const Slider = ({ movies }) => {
     const sliderContents = [];
     for (const index of combinedIndex) {
       sliderContents.push(
-        <Card width={95 / itemsInRow} movie={movies[index]} index={index} key={movies[index].id} />,
+        <Card width={95 / itemsInRow} movie={movies[index]} index={index} key={index} />,
       );
     }
 
@@ -144,7 +144,7 @@ const Slider = ({ movies }) => {
       setLowestVisibleIndex(newIndex);
       setSliderMoving(false);
       setSliderMoveDirection(null);
-    }, 750);
+    }, 850);
   };
 
   const handleNext = () => {
@@ -173,7 +173,7 @@ const Slider = ({ movies }) => {
     setTimeout(() => {
       setLowestVisibleIndex(newIndex);
       setSliderMoving(false);
-    }, 750);
+    }, 850);
 
     // slider has moved and show the previous arrow
     if (!sliderHasMoved) {
