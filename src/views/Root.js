@@ -3,44 +3,31 @@ import MainTemplate from 'templates/MainTemplate';
 import Navigation from 'components/Navigation/Navigation';
 import Bilboard from 'components/Bilboard';
 import RowSlider from 'components/RowSlider';
-// import { videos } from 'data';
-import axios from 'axios/axios';
+import { moviesLoader } from 'axios/functions';
 
 const Root = () => {
-  const [movies, setResponse] = useState(null);
-  const [movieLoad, setMovieLoad] = useState(false);
+  const [movies, setMovies] = useState(null);
+  const [headerMovie, setHeaderMovie] = useState(null);
 
   useEffect(() => {
-    if (!movieLoad) {
-      axios.get('/movie/popular').then((response) => {
-        const resData = response.data;
-        const moviesData = [];
-        resData.results.forEach((item) => {
-          const newItem = {
-            title: item.title,
-            overview: item.overview,
-            id: item.id,
-            img: `https://image.tmdb.org/t/p/original${item.poster_path}`,
-          };
-          moviesData.push(newItem);
-        });
-        setResponse(moviesData);
-        setMovieLoad(true);
-      });
-    }
-  }, [movieLoad]);
+    moviesLoader().then((data) => {
+      setHeaderMovie(data[0]);
+      setMovies(data);
+    });
+  }, []);
 
   return (
     <MainTemplate>
       <Navigation />
-      <Bilboard />
-      {movies && <RowSlider title="Test" href="/" movies={movies} />}
-      {movies && <RowSlider title="Test" href="/" movies={movies} />}
-      {movies && <RowSlider title="Test" href="/" movies={movies} />}
-      {movies && <RowSlider title="Test" href="/" movies={movies} />}
-      {movies && <RowSlider title="Test" href="/" movies={movies} />}
-      {movies && <RowSlider title="Test" href="/" movies={movies} />}
-      {movies && <RowSlider title="Test" href="/" movies={movies} />}
+      {movies ? (
+        <>
+          <Bilboard movie={headerMovie} />
+          <RowSlider title="Test" href="/" movies={movies} />
+          <RowSlider title="Test" href="/" movies={movies} />
+        </>
+      ) : (
+        <p>Loading...</p>
+      )}
     </MainTemplate>
   );
 };

@@ -35,7 +35,6 @@ const Card = ({ movie, width }) => {
       {movie && (
         <StyledCard style={{ width: `${width}%` }}>
           <a href="/">
-            {console.log(movie)}
             <img src={movie.img} alt={movie.title} />
           </a>
         </StyledCard>
