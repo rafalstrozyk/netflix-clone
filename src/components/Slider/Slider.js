@@ -8,7 +8,7 @@ const StyledSlider = styled.div`
   padding: 0 4%;
   position: relative;
   margin-bottom: 40px;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
 `;
 
 const Cards = styled.div`
