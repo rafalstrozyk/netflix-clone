@@ -4,7 +4,7 @@ import Slider from 'components/Slider/Slider';
 import RowHeader from 'components/Headers/RowHeader';
 
 const RowSlider = ({ movies, title, href }) => (
-  <div>
+  <div style={{ position: 'relative', zIndex: '1' }}>
     <RowHeader href={href}>{title}</RowHeader>
     <Slider movies={movies} />
   </div>

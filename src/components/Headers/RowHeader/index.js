@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { ReactComponent as ChevronRightIcon } from 'assets/icons/chevron-thin-right.svg';
+// import Header from 'components/Headers/HeaderOne';
 
 const StyledHeader = styled.h2`
   line-height: 1.3;
@@ -12,7 +13,7 @@ const StyledHeader = styled.h2`
     font-size: 1.4vw;
     color: #e5e5e5;
     font-weight: 700;
-    margin: 0 4% 0.5em 4%;
+    /* margin: 0 4% 0.5em 4%; */
     text-decoration: none;
     display: inline-block;
     min-width: 6em;
@@ -43,7 +44,7 @@ const StyledHeader = styled.h2`
 
   .see-all-link {
     display: inline-block;
-    font-size: 0.9vw;
+    font-size: 1.3rem;
     margin-right: 4px;
     max-width: 0;
     line-height: 0.8vw;

@@ -7,13 +7,13 @@ import SliderControl from 'components/Slider/SliderControl/SliderControl';
 const StyledSlider = styled.div`
   padding: 0 4%;
   position: relative;
-  margin-bottom: 40px;
-  /* overflow-x: hidden; */
+  margin-bottom: 0;
+  margin-top: 20px;
+  z-index: 1;
 `;
 
 const Cards = styled.div`
   white-space: nowrap;
-  z-index: 2;
 `;
 
 const Slider = ({ movies }) => {
@@ -99,7 +99,7 @@ const Slider = ({ movies }) => {
     const sliderContents = [];
     for (const index of combinedIndex) {
       sliderContents.push(
-        <Card width={95 / itemsInRow} movie={movies[index]} index={index} key={index} />,
+        <Card width={`${93 / itemsInRow}`} movie={movies[index]} index={index} key={index} />,
       );
     }
 
@@ -107,7 +107,7 @@ const Slider = ({ movies }) => {
     if (!sliderHasMoved) {
       for (let i = 0; i < itemsInRow; i++) {
         sliderContents.unshift(
-          <div className="slider-item" style={{ width: `${95 / itemsInRow}%` }} key={`${i}-key`} />,
+          <div className="slider-item" style={{ width: `${93 / itemsInRow}%` }} key={`${i}-key`} />,
         );
       }
     }
