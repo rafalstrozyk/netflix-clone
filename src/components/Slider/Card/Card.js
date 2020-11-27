@@ -17,20 +17,43 @@ const StyledCard = styled.div`
   position: relative;
   z-index: 2;
 
-  margin-bottom: -200px;
   .card-back {
     background-color: ${({ theme }) => theme.backColor};
-    padding: 10px;
-    position: relative;
+    padding: 0 10px;
+    display: block;
+    position: absolute;
+    max-width: 98%;
+    top: 0;
+    left: 4px;
     z-index: -10;
-    transform: translateY(-200%);
-    /* display: none; */
-  }
+    opacity: 0;
+    visibility: hidden;
+    box-shadow: inset 5px 5px 15px #000, 5px 5px 15px #000;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
 
-  .buttons-group {
-    display: flex;
-    > *:not(:first-child) {
-      margin-left: 8px;
+    .header {
+      margin: 25px 0;
+    }
+
+    .buttons-group {
+      display: flex;
+      margin-bottom: 20px;
+      > *:not(:first-child) {
+        margin-left: 8px;
+      }
+    }
+
+    .overview {
+      margin-top: -25px;
+      margin-bottom: 10px;
+      position: relative;
+      padding: 0 20px;
+      p {
+        word-break: break-all;
+        white-space: normal;
+        font-size: 1.2rem;
+      }
     }
   }
 
@@ -38,14 +61,6 @@ const StyledCard = styled.div`
     display: block;
     max-width: 100%;
     border-radius: 4px;
-  }
-
-  .overview {
-    p {
-      word-break: break-all;
-      white-space: normal;
-      font-size: 1.2rem;
-    }
   }
 
   :first-of-type {
@@ -57,26 +72,45 @@ const StyledCard = styled.div`
   }
 
   :hover {
-    transform: scale(1.1);
-    -webkit-transform: scale(1.1, 1.1);
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2, 1.2);
     z-index: 20 !important;
-    margin-top: -200px;
     .shadow {
       box-shadow: inset 5px 5px 15px #000, 5px 5px 15px #000;
     }
 
     .card-back {
       display: flex;
-      z-index: 20;
-      transform: translateY(0);
-      /* flex-wrap: wrap; */
+      z-index: 15 !important;
+      top: 98%;
+      visibility: visible;
       flex-direction: column;
       align-items: center;
+      opacity: 1;
     }
   }
 `;
 
+// const StyledHeader = styled(Header)`
+//   position: relative;
+//   word-wrap: break-word;
+//   background-color: red;
+//   overflow-wrap: break-word;
+//   width: 100px;
+// `;
+
 const Card = ({ movie, width }) => {
+  function maxWords(str) {
+    const words = str.split(' ');
+    const newWords = [];
+    for (let i = 0; i < 10; i++) {
+      newWords.push(words[i]);
+    }
+    newWords.push('...');
+    const newString = newWords.join(' ');
+    return newString;
+  }
+
   return (
     <>
       {movie && (
@@ -87,14 +121,9 @@ const Card = ({ movie, width }) => {
               <div className="header">
                 <Header as="h4">{movie.title}</Header>
               </div>
+
               <div className="overview">
-                <p>
-                  In late 1967 a young orphaned boy goes to live with his loving grandma in the
-                  rural Alabama town of Demopolis As the boy and his grandmother encounter some
-                  deceptively glamorous but thoroughly diabolical witches, she wisely whisks him
-                  away to a seaside resort Regrettably, they arrive at precisely the same time that
-                  the worlds Grand High Witch has gathered
-                </p>
+                <p>{maxWords(movie.overview)}</p>
               </div>
               <div className="buttons-group">
                 <ButtonRoundIcon>

@@ -3,6 +3,7 @@ import MainTemplate from 'templates/MainTemplate';
 import Navigation from 'components/Navigation/Navigation';
 import Bilboard from 'components/Bilboard';
 import RowSlider from 'components/RowSlider';
+import SlidersGroup from 'components/Slider/SlidersGroup';
 import { moviesLoader } from 'axios/functions';
 
 const Root = () => {
@@ -22,8 +23,16 @@ const Root = () => {
       {movies ? (
         <>
           <Bilboard movie={headerMovie} />
-          <RowSlider title="Test" href="/" movies={movies} />
-          <RowSlider title="Test" href="/" movies={movies} />
+          <SlidersGroup>
+            <RowSlider title="Test" href="/" movies={movies} />
+            <RowSlider title="Test" href="/" movies={movies} />
+            <RowSlider title="Test" href="/" movies={movies} />
+            <RowSlider title="Test" href="/" movies={movies} />
+            <RowSlider title="Test" href="/" movies={movies} />
+            <RowSlider title="Test" href="/" movies={movies} />
+            <RowSlider title="Test" href="/" movies={movies} />
+            <RowSlider title="Test" href="/" movies={movies} />
+          </SlidersGroup>
         </>
       ) : (
         <p>Loading...</p>

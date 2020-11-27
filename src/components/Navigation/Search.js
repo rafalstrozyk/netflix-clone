@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import TransitionTemplate from 'templates/TransitionTemplate';
 import ButtonIcon from 'components/Buttons/ButtonIcon/ButtonIcon';
 import { ReactComponent as SearchIocon } from 'assets/icons/magnifying-glass.svg';
+import { useOutsideAlerter } from 'hooks/useOutside';
 
 const StyledSearch = styled.div`
   display: flex;
@@ -39,6 +40,8 @@ const StyledButton = styled(ButtonIcon)`
 const Search = () => {
   const [isOpen, setIsOpen] = useState(false);
   const inputFocus = useRef(null);
+  const outsideRef = useRef(null);
+  useOutsideAlerter(outsideRef, setIsOpen);
 
   const handleFocus = () => {
     setIsOpen(!isOpen);
@@ -46,14 +49,16 @@ const Search = () => {
   };
 
   return (
-    <TransitionTemplate timeout={400} isOpen={isOpen}>
-      <StyledSearch>
-        <StyledButton Icon={SearchIocon} type="button" onClick={handleFocus} />
-        <form>
-          <input ref={inputFocus} placeholder="Tytuły, osoby, gatunki" type="text" />
-        </form>
-      </StyledSearch>
-    </TransitionTemplate>
+    <div ref={outsideRef}>
+      <TransitionTemplate timeout={400} isOpen={isOpen}>
+        <StyledSearch>
+          <StyledButton Icon={SearchIocon} type="button" onClick={handleFocus} />
+          <form>
+            <input ref={inputFocus} placeholder="Tytuły, osoby, gatunki" type="text" />
+          </form>
+        </StyledSearch>
+      </TransitionTemplate>
+    </div>
   );
 };
 

@@ -10,9 +10,10 @@ import { ReactComponent as CakeIcon } from 'assets/icons/cake.svg';
 
 const PinningHeader = styled.div`
   height: 70px;
-  z-index: 2;
+  z-index: 2000;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 10%, rgba(0, 0, 0, 0));
   position: fixed;
+  top: -6px;
   left: 0;
   right: 0;
   display: flex;

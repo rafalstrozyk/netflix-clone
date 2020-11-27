@@ -4,11 +4,9 @@ import { Transition } from 'react-transition-group';
 
 const TransitionTemplate = ({ children, isOpen, timeout }) => {
   return (
-    <>
-      <Transition in={isOpen} timeout={timeout}>
-        {(state) => React.cloneElement(children, { state })}
-      </Transition>
-    </>
+    <Transition in={isOpen} timeout={timeout}>
+      {(state) => React.cloneElement(children, { state })}
+    </Transition>
   );
 };
 

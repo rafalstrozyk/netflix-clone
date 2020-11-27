@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 const StyledContener = styled.div`
   margin: 0;
   padding: 0;
+  text-align: center;
   h1 {
     font-size: 2.3rem;
   }
@@ -27,6 +28,8 @@ const StyledHeader = styled.div`
   letter-spacing: 3px;
   margin: 0;
   padding: 0;
+  word-wrap: break-word;
+  white-space: normal;
 `;
 
 const Header = ({ as, children }) => (
