@@ -2,6 +2,11 @@ import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Header from 'components/Headers/HeaderOne';
 import { Context } from 'state/store';
+import ButtonRoundIcon from 'components/Buttons/ButtonRoundIcon';
+import { ReactComponent as PlayIcon } from 'assets/icons/controller-play.svg';
+import { ReactComponent as PlusIcon } from 'assets/icons/plus.svg';
+import { ReactComponent as ThumbsDownIcon } from 'assets/icons/thumbs-down.svg';
+import { ReactComponent as ThumbsUpIcon } from 'assets/icons/thumbs-up.svg';
 
 const StyledCardFullSize = styled.div`
   position: fixed;
@@ -16,15 +21,36 @@ const StyledCardFullSize = styled.div`
   align-items: center;
 `;
 
-const StyledCardContent = styled.div`
+const StyledCardBackImg = styled.div`
   height: 600px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+  width: 600px;
   background-image: url(${({ img }) => img});
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
+`;
+
+const StyledCardBack = styled.div`
+  position: absolute;
+  background-color: ${({ theme }) => theme.backColor};
+  width: 404px;
+  top: 70%;
+  left: 16%;
+  padding: 10px;
+
+  .buttons-group {
+    display: flex;
+    margin-bottom: 20px;
+    > *:not(:first-child) {
+      margin-left: 8px;
+    }
+  }
+`;
+
+const Container = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
 `;
 
 const CardFullSize = () => {
@@ -36,17 +62,32 @@ const CardFullSize = () => {
       {movieIsOpen && (
         <StyledCardFullSize>
           {movie && (
-            <StyledCardContent img={movie.img}>
-              <div className="card-back">
-                <div className="header">
+            <Container>
+              <StyledCardBackImg img={movie.img} />
+              <StyledCardBack>
+                <div>
                   <Header as="h4">{movie.title}</Header>
                 </div>
 
-                <div className="overview">
+                <div>
                   <p>{movie.overview}</p>
                 </div>
-              </div>
-            </StyledCardContent>
+                <div className="buttons-group">
+                  <ButtonRoundIcon>
+                    <PlayIcon />
+                  </ButtonRoundIcon>
+                  <ButtonRoundIcon secondary>
+                    <PlusIcon />
+                  </ButtonRoundIcon>
+                  <ButtonRoundIcon secondary>
+                    <ThumbsUpIcon />
+                  </ButtonRoundIcon>
+                  <ButtonRoundIcon secondary>
+                    <ThumbsDownIcon />
+                  </ButtonRoundIcon>
+                </div>
+              </StyledCardBack>
+            </Container>
           )}
         </StyledCardFullSize>
       )}
