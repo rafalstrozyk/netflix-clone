@@ -56,32 +56,42 @@ const StyledButtonsGroup = styled.div`
   }
 `;
 
-const Bilboard = ({ movie }) => {
-  const { title, overview, img } = movie;
+const Bilboard = ({ movies }) => {
+  const movie = {
+    title: '',
+    overview: '',
+    img: '',
+  };
+  if (movies.length > 0) {
+    movie.title = movies[0].title;
+    movie.overview = movies[0].overview;
+    movie.img = movies[0].img;
+  }
+
   return (
-    <StyledBilboard img={img}>
-      <StyledWrapper>
-        <h3>{title}</h3>
-        <p>{overview}</p>
-        <StyledButtonsGroup>
-          <Button hasLabel="Odtwórz" hasIcon={<PlayIcon />} />
-          <Button secondary hasLabel="Więcej informacji" hasIcon={<InfoIcon />} />
-        </StyledButtonsGroup>
-      </StyledWrapper>
-    </StyledBilboard>
+    <>
+      {movies && (
+        <StyledBilboard img={movie.img}>
+          <StyledWrapper>
+            <h3>{movie.title}</h3>
+            <p>{movie.overview}</p>
+            <StyledButtonsGroup>
+              <Button hasLabel="Odtwórz" hasIcon={<PlayIcon />} />
+              <Button secondary hasLabel="Więcej informacji" hasIcon={<InfoIcon />} />
+            </StyledButtonsGroup>
+          </StyledWrapper>
+        </StyledBilboard>
+      )}
+    </>
   );
 };
 
 Bilboard.propTypes = {
-  movie: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.string, PropTypes.number])),
+  movies: PropTypes.arrayOf(PropTypes.object),
 };
 
 Bilboard.defaultProps = {
-  movie: {
-    img: '',
-    title: 'No wideo',
-    overview: 'No wideo',
-  },
+  movies: [],
 };
 
 export default Bilboard;

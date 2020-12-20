@@ -14,7 +14,7 @@ const StyledSearch = styled.div`
     state === 'entering' || state === 'entered' ? 'rgba(0, 0, 0, 0.7)' : 'transparent'};
   border: ${({ state }) =>
     state === 'entering' || state === 'entered' ? '1px solid #fff' : 'none'};
-  form {
+  div {
     width: ${({ state }) => (state === 'entering' || state === 'entered' ? '200px' : '0')};
     opacity: ${({ state }) => (state === 'entering' || state === 'entered' ? '1' : '0')};
     transform: translateY(${({ state }) => state === 'exited' && '-300%'});
@@ -43,6 +43,10 @@ const Search = () => {
   const outsideRef = useRef(null);
   useOutsideAlerter(outsideRef, setIsOpen);
 
+  // const handleSearch = () => {
+
+  // }
+
   const handleFocus = () => {
     setIsOpen(!isOpen);
     inputFocus.current.focus();
@@ -53,9 +57,9 @@ const Search = () => {
       <TransitionTemplate timeout={400} isOpen={isOpen}>
         <StyledSearch>
           <StyledButton Icon={SearchIocon} type="button" onClick={handleFocus} />
-          <form>
+          <div>
             <input ref={inputFocus} placeholder="Tytuły, osoby, gatunki" type="text" />
-          </form>
+          </div>
         </StyledSearch>
       </TransitionTemplate>
     </div>

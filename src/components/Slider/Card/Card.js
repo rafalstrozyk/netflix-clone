@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Header from 'components/Headers/HeaderOne';
+import { Context } from 'state/store';
+
 import ButtonRoundIcon from 'components/Buttons/ButtonRoundIcon';
 import { ReactComponent as PlayIcon } from 'assets/icons/controller-play.svg';
 import { ReactComponent as PlusIcon } from 'assets/icons/plus.svg';
@@ -91,15 +93,8 @@ const StyledCard = styled.div`
   }
 `;
 
-// const StyledHeader = styled(Header)`
-//   position: relative;
-//   word-wrap: break-word;
-//   background-color: red;
-//   overflow-wrap: break-word;
-//   width: 100px;
-// `;
-
 const Card = ({ movie, width }) => {
+  const { dispatch } = useContext(Context);
   function maxWords(str) {
     const words = str.split(' ');
     const newWords = [];
@@ -111,10 +106,14 @@ const Card = ({ movie, width }) => {
     return newString;
   }
 
+  function handleIsOpen() {
+    dispatch({ type: 'SET_MOVIE', payload: movie });
+  }
+
   return (
     <>
       {movie && (
-        <StyledCard style={{ width: `${width}%` }}>
+        <StyledCard onClick={handleIsOpen} style={{ width: `${width}%` }}>
           <div className="shadow">
             <img src={movie.img} className="back-image" alt={movie.title} />
             <div className="card-back">
