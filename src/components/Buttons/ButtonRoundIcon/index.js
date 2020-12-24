@@ -57,13 +57,13 @@ const ButtonRoundIcon = ({ children, as, secondary, cloudText }) => (
 ButtonRoundIcon.propTypes = {
   children: PropTypes.element.isRequired,
   as: PropTypes.string,
-  secondary: PropTypes.string,
+  secondary: PropTypes.bool,
   cloudText: PropTypes.string,
 };
 
 ButtonRoundIcon.defaultProps = {
   as: 'button',
-  secondary: null,
+  secondary: false,
   cloudText: '',
 };
 

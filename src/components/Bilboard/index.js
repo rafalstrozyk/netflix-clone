@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import image from 'assets/images/video/hero.jpg';
 import styled from 'styled-components';
 import Button from 'components/Buttons/Button/Button';
 import { ReactComponent as PlayIcon } from 'assets/icons/controller-play.svg';

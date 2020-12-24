@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
 import Header from 'components/Headers/HeaderOne';
 import { Context } from 'state/store';
 import ButtonRoundIcon from 'components/Buttons/ButtonRoundIcon';
+import { useOutsideAlerter } from 'hooks/useOutside';
 import { ReactComponent as PlayIcon } from 'assets/icons/controller-play.svg';
 import { ReactComponent as PlusIcon } from 'assets/icons/plus.svg';
 import { ReactComponent as ThumbsDownIcon } from 'assets/icons/thumbs-down.svg';
@@ -19,27 +20,23 @@ const StyledCardFullSize = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: auto;
 `;
 
-const StyledCardBackImg = styled.div`
-  height: 600px;
-  width: 600px;
-  background-image: url(${({ img }) => img});
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
+const StyledCardBackImg = styled.img`
+  height: auto;
+  width: 20vw;
 `;
 
 const StyledCardBack = styled.div`
-  position: absolute;
   background-color: ${({ theme }) => theme.backColor};
-  width: 404px;
-  top: 70%;
-  left: 16%;
+  width: 20vw;
   padding: 10px;
 
   .buttons-group {
     display: flex;
+    justify-content: center;
+    align-items: center;
     margin-bottom: 20px;
     > *:not(:first-child) {
       margin-left: 8px;
@@ -48,22 +45,38 @@ const StyledCardBack = styled.div`
 `;
 
 const Container = styled.div`
-  position: relative;
+  margin: 50px 0;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 5px 5px 15px #000, 5px 5px 15px #000;
 `;
 
 const CardFullSize = () => {
   const {
+    dispatch,
     state: { movie, movieIsOpen },
   } = useContext(Context);
+
+  const [isOpen, setIsOpen] = useState(false);
+  const outsideRef = useRef(null);
+  function handlerIsOpen(value) {
+    dispatch({ type: 'SET_IS_OPEN', payload: value });
+    setIsOpen(value);
+  }
+  useOutsideAlerter(outsideRef, handlerIsOpen);
+
+  useEffect(() => {
+    setIsOpen(movieIsOpen);
+  }, [movieIsOpen]);
   return (
     <>
-      {movieIsOpen && (
+      {isOpen && (
         <StyledCardFullSize>
           {movie && (
-            <Container>
-              <StyledCardBackImg img={movie.img} />
+            <Container ref={outsideRef}>
+              <StyledCardBackImg src={movie.img} alt={movie.title} />
               <StyledCardBack>
                 <div>
                   <Header as="h4">{movie.title}</Header>

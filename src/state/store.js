@@ -4,14 +4,9 @@ import Reducer from 'state/reducer';
 
 const initialState = {
   movies: [],
-  movie: {
-    title: 'Christmas Crossfire',
-    overview:
-      "A man foils an attempted murder, then flees the crew of would-be killers along with their intended target as a woman he's just met tries to find him.",
-    id: 765123,
-    img: 'https://image.tmdb.org/t/p/original/ajKpYK7XdzIYjy9Uy8nkgRboKyv.jpg',
-  },
-  movieIsOpen: true,
+  movie: {},
+  movieIsOpen: false,
+  searchString: '',
 };
 export const Context = createContext(initialState);
 
@@ -21,7 +16,7 @@ const Store = ({ children }) => {
 };
 
 Store.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array, PropTypes.string]).isRequired,
 };
 
 export default Store;

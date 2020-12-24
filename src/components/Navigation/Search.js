@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, createRef, useContext } from 'react';
 import styled from 'styled-components';
 import TransitionTemplate from 'templates/TransitionTemplate';
+import { Context } from 'state/store';
 import ButtonIcon from 'components/Buttons/ButtonIcon/ButtonIcon';
 import { ReactComponent as SearchIocon } from 'assets/icons/magnifying-glass.svg';
 import { useOutsideAlerter } from 'hooks/useOutside';
@@ -39,17 +40,18 @@ const StyledButton = styled(ButtonIcon)`
 
 const Search = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const inputFocus = useRef(null);
-  const outsideRef = useRef(null);
+  const inputFocus = createRef();
+  const outsideRef = createRef();
   useOutsideAlerter(outsideRef, setIsOpen);
-
-  // const handleSearch = () => {
-
-  // }
+  const { dispatch } = useContext(Context);
 
   const handleFocus = () => {
     setIsOpen(!isOpen);
     inputFocus.current.focus();
+  };
+
+  const handleSearch = (e) => {
+    dispatch({ type: 'SET_SEARCH_STRING', payload: e.target.value });
   };
 
   return (
@@ -58,7 +60,12 @@ const Search = () => {
         <StyledSearch>
           <StyledButton Icon={SearchIocon} type="button" onClick={handleFocus} />
           <div>
-            <input ref={inputFocus} placeholder="Tytuły, osoby, gatunki" type="text" />
+            <input
+              ref={inputFocus}
+              onChange={(e) => handleSearch(e)}
+              placeholder="Tytuły, osoby, gatunki"
+              type="text"
+            />
           </div>
         </StyledSearch>
       </TransitionTemplate>

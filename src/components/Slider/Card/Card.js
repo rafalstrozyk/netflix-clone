@@ -108,6 +108,7 @@ const Card = ({ movie, width }) => {
 
   function handleIsOpen() {
     dispatch({ type: 'SET_MOVIE', payload: movie });
+    dispatch({ type: 'SET_IS_OPEN', payload: true });
   }
 
   return (

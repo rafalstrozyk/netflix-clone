@@ -1,6 +1,6 @@
 import React from 'react';
 import MainTemplate from 'templates/MainTemplate';
-import StateContener from 'templates/StateContener';
+import StateContener from 'state/StateContener';
 
 const Root = () => {
   return (
