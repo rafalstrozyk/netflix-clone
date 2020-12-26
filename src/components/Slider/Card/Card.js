@@ -13,7 +13,7 @@ import { ReactComponent as ThumbsUpIcon } from 'assets/icons/thumbs-up.svg';
 const StyledCard = styled.div`
   display: inline-block;
   padding: 0 4px;
-  cursor: pointer;
+
   vertical-align: middle;
   transition-duration: 0.4s;
   position: relative;
@@ -114,9 +114,17 @@ const Card = ({ movie, width }) => {
   return (
     <>
       {movie && (
-        <StyledCard onClick={handleIsOpen} style={{ width: `${width}%` }}>
+        <StyledCard style={{ width: `${width}%` }}>
           <div className="shadow">
-            <img src={movie.img} className="back-image" alt={movie.title} />
+            <div
+              style={{ cursor: 'pointer' }}
+              onClick={handleIsOpen}
+              onKeyPress={handleIsOpen}
+              role="button"
+              tabIndex="0"
+            >
+              <img src={movie.img} className="back-image" alt={movie.title} />
+            </div>
             <div className="card-back">
               <div className="header">
                 <Header as="h4">{movie.title}</Header>
@@ -125,6 +133,7 @@ const Card = ({ movie, width }) => {
               <div className="overview">
                 <p>{maxWords(movie.overview)}</p>
               </div>
+
               <div className="buttons-group">
                 <ButtonRoundIcon>
                   <PlayIcon />
