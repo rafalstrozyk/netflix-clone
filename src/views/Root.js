@@ -6,6 +6,7 @@ import Home from 'views/home';
 import Films from 'views/films';
 import Programs from 'views/programs';
 import MyList from 'views/myList';
+import Search from 'views/search';
 
 const Root = () => {
   return (
@@ -22,6 +23,9 @@ const Root = () => {
         </Route>
         <Route path="/my-list">
           <MyList />
+        </Route>
+        <Route path="/search">
+          <Search />
         </Route>
       </Switch>
     </MainTemplate>

@@ -8,6 +8,7 @@ import Store from 'state/store';
 import MoviesConsumer from 'templates/MoviesConsumer';
 import Navigation from 'components/Navigation/Navigation';
 import CardFullSize from 'components/Slider/Card/CardFullSize';
+import SearchTemplate from 'templates/SearchTemplate';
 
 const MainTemplate = ({ children }) => (
   <BrowserRouter>
@@ -15,6 +16,7 @@ const MainTemplate = ({ children }) => (
       <GlobalStyle />
       <ThemeProvider theme={theme}>
         <Navigation />
+        <SearchTemplate />
         <CardFullSize />
         <MoviesConsumer>{children}</MoviesConsumer>
       </ThemeProvider>
