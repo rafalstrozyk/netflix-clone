@@ -1,0 +1,26 @@
+import React, { useContext } from 'react';
+import Card from 'components/Slider/Card/Card';
+import styled from 'styled-components';
+import { Context } from 'state/store';
+
+const StyledMyList = styled.div`
+  margin-top: 70px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
+const MyList = () => {
+  const { state } = useContext(Context);
+
+  return (
+    <StyledMyList>
+      {state.movies.map((item) =>
+        item.my_list ? <Card width="15" movie={item} key={item.id} /> : null,
+      )}
+    </StyledMyList>
+  );
+};
+
+export default MyList;

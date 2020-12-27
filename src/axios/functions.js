@@ -13,6 +13,7 @@ export async function moviesLoader() {
             overview: item.overview,
             id: item.id,
             img: `https://image.tmdb.org/t/p/original${item.poster_path}`,
+            my_list: false,
           };
           moviesData.push(newItem);
         });

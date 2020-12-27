@@ -1,4 +1,6 @@
 const Reducer = (state, action) => {
+  const newState = state;
+  let isOnList;
   switch (action.type) {
     case 'SET_MOVIES':
       return {
@@ -19,6 +21,12 @@ const Reducer = (state, action) => {
       return {
         ...state,
         searchString: action.payload,
+      };
+    case 'ADD_MY_LIST':
+      isOnList = newState.movies.find((item) => item.id === action.payload).my_list;
+      newState.movies.find((item) => item.id === action.payload).my_list = !isOnList;
+      return {
+        ...newState,
       };
     default:
       return state;

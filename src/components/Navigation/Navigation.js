@@ -59,21 +59,21 @@ const Navigation = () => {
       <StyledLogo href="/" />
       <PrimaryNavigation>
         <NavigationTab>
-          <NavigationItem href="/" navigate>
+          <NavigationItem exact to="/">
             Strona główna
           </NavigationItem>
         </NavigationTab>
         <NavigationTab>
-          <NavigationItem href="/"> Seriale i programy</NavigationItem>
+          <NavigationItem to="/programs"> Seriale i programy</NavigationItem>
         </NavigationTab>
         <NavigationTab>
-          <NavigationItem href="/">Filmy</NavigationItem>
+          <NavigationItem to="/films">Filmy</NavigationItem>
         </NavigationTab>
         <NavigationTab>
-          <NavigationItem href="/">Najnowsze</NavigationItem>
+          <NavigationItem to="/new">Najnowsze</NavigationItem>
         </NavigationTab>
         <NavigationTab>
-          <NavigationItem href="/">Moja lista</NavigationItem>
+          <NavigationItem to="/my-list">Moja lista</NavigationItem>
         </NavigationTab>
       </PrimaryNavigation>
       <SecondaryNavigation>

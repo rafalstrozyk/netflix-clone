@@ -9,6 +9,7 @@ import { ReactComponent as PlayIcon } from 'assets/icons/controller-play.svg';
 import { ReactComponent as PlusIcon } from 'assets/icons/plus.svg';
 import { ReactComponent as ThumbsDownIcon } from 'assets/icons/thumbs-down.svg';
 import { ReactComponent as ThumbsUpIcon } from 'assets/icons/thumbs-up.svg';
+import { ReactComponent as CheckmarkIcon } from 'assets/icons/checkmark.svg';
 
 const StyledCard = styled.div`
   display: inline-block;
@@ -106,6 +107,10 @@ const Card = ({ movie, width }) => {
     return newString;
   }
 
+  function handleAddToMyList() {
+    dispatch({ type: 'ADD_MY_LIST', payload: movie.id });
+  }
+
   function handleIsOpen() {
     dispatch({ type: 'SET_MOVIE', payload: movie });
     dispatch({ type: 'SET_IS_OPEN', payload: true });
@@ -138,8 +143,8 @@ const Card = ({ movie, width }) => {
                 <ButtonRoundIcon>
                   <PlayIcon />
                 </ButtonRoundIcon>
-                <ButtonRoundIcon secondary>
-                  <PlusIcon />
+                <ButtonRoundIcon onClick={handleAddToMyList} secondary>
+                  {movie.my_list ? <CheckmarkIcon /> : <PlusIcon />}
                 </ButtonRoundIcon>
                 <ButtonRoundIcon secondary>
                   <ThumbsUpIcon />

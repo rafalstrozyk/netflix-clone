@@ -1,36 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 
-const StyledNavLink = styled.a`
-  color: ${({ theme, navigate }) =>
-    navigate ? theme.fontColorSecondaryOne : theme.fontColorSecondaryTwo};
-  font-weight: ${({ navigate }) => navigate && 700};
+const activeClassName = 'nav-item-active';
+
+const StyledNavLink = styled(NavLink).attrs({
+  activeClassName,
+})`
+  color: ${({ theme }) => theme.fontColorSecondaryTwo};
   transition: color 0.4s;
   text-decoration: none;
-  cursor: ${({ navigate }) => !navigate && 'pointer'};
-  pointer-events: ${({ navigate }) => navigate && 'none'};
+  cursor: 'pointer';
   background-color: transparent;
   :focus,
   :hover {
     color: ${({ theme }) => theme.fontColorSecondaryThree};
   }
+
+  &.${activeClassName} {
+    color: ${({ theme }) => theme.fontColorSecondaryOne};
+    font-weight: 700;
+    cursor: default;
+    pointer-events: 'none';
+  }
 `;
 
-const NavItem = ({ href, children, navigate }) => (
-  <StyledNavLink href={href} navigate={navigate}>
+const NavItem = ({ exact, to, children }) => (
+  <StyledNavLink exact={exact} to={to}>
     {children}
   </StyledNavLink>
 );
 
 NavItem.propTypes = {
-  href: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.string]).isRequired,
-  navigate: PropTypes.bool,
+  exact: PropTypes.bool,
 };
 
 NavItem.defaultProps = {
-  navigate: false,
+  exact: false,
 };
 
 export default NavItem;

@@ -47,8 +47,8 @@ const StyledButtonRoundIcon = styled.button`
   }
 `;
 
-const ButtonRoundIcon = ({ children, as, secondary, cloudText }) => (
-  <StyledButtonRoundIcon as={as} secondary={secondary}>
+const ButtonRoundIcon = ({ children, onClick, as, secondary, cloudText }) => (
+  <StyledButtonRoundIcon onClick={onClick} as={as} secondary={secondary}>
     <div className="icon">{children}</div>
     {cloudText.length > 0 && <div className="cloud">{cloudText}</div>}
   </StyledButtonRoundIcon>
@@ -58,6 +58,7 @@ ButtonRoundIcon.propTypes = {
   children: PropTypes.element.isRequired,
   as: PropTypes.string,
   secondary: PropTypes.bool,
+  onClick: PropTypes.func,
   cloudText: PropTypes.string,
 };
 
@@ -65,6 +66,7 @@ ButtonRoundIcon.defaultProps = {
   as: 'button',
   secondary: false,
   cloudText: '',
+  onClick: null,
 };
 
 export default ButtonRoundIcon;
