@@ -17,7 +17,7 @@ const MyList = () => {
   return (
     <StyledMyList>
       {state.movies.map((item) =>
-        item.my_list ? <Card width="15" movie={item} key={item.id} /> : null,
+        item.my_list ? <Card width="16.5" movie={item} key={item.id} /> : null,
       )}
     </StyledMyList>
   );
