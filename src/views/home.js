@@ -11,14 +11,20 @@ const Home = () => {
     <>
       {state.movies.length > 0 ? (
         <>
-          <Bilboard movies={state.movies} />
+          <Bilboard movies={state.movies[0].movies} />
           <SliderGroup>
-            <RowSlider title="Consumer Test" href="/" movies={state.movies} />
-            <RowSlider title="Consumer Test" href="/" movies={state.movies} />
-            <RowSlider title="Consumer Test" href="/" movies={state.movies} />
-            <RowSlider title="Consumer Test" href="/" movies={state.movies} />
-            <RowSlider title="Consumer Test" href="/" movies={state.movies} />
+            {state.movies.map((item) => (
+              <RowSlider title={item.title} href="/" movies={item.movies} />
+            ))}
           </SliderGroup>
+
+          {/* <SliderGroup>
+            
+            <RowSlider title="Consumer Test" href="/" movies={state.movies} />
+            <RowSlider title="Consumer Test" href="/" movies={state.movies} />
+            <RowSlider title="Consumer Test" href="/" movies={state.movies} />
+            <RowSlider title="Consumer Test" href="/" movies={state.movies} />
+          </SliderGroup> */}
         </>
       ) : (
         <p>Loading...</p>
