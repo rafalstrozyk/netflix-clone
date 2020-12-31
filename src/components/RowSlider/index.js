@@ -9,7 +9,7 @@ const StyledIndex = styled.div`
   z-index: ${({ indexHange }) => (indexHange ? '20' : '1')};
 `;
 
-const RowSlider = ({ movies, title, href }) => {
+const RowSlider = ({ movies, tvs, title, href }) => {
   const [hovered, setHovered] = useState(false);
 
   return (
@@ -19,18 +19,20 @@ const RowSlider = ({ movies, title, href }) => {
       onMouseLeave={() => setHovered(false)}
     >
       <RowHeader href={href}>{title}</RowHeader>
-      <Slider movies={movies} />
+      <Slider tvs={tvs} movies={movies} />
     </StyledIndex>
   );
 };
 
 RowSlider.propTypes = {
   movies: PropTypes.arrayOf(PropTypes.object),
+  tvs: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.oneOfType([PropTypes.string, PropTypes.element]).isRequired,
   href: PropTypes.string.isRequired,
 };
 RowSlider.defaultProps = {
   movies: [],
+  tvs: [],
 };
 
 export default RowSlider;

@@ -7,6 +7,11 @@ const Reducer = (state, action) => {
         ...state,
         movies: action.payload,
       };
+    case 'SET_TVS':
+      return {
+        ...state,
+        tvs: action.payload,
+      };
     case 'SET_MOVIE':
       return {
         ...state,
@@ -23,8 +28,14 @@ const Reducer = (state, action) => {
         searchString: action.payload,
       };
     case 'ADD_MY_LIST':
-      isOnList = newState.movies.find((item) => item.id === action.payload).my_list;
-      newState.movies.find((item) => item.id === action.payload).my_list = !isOnList;
+      if (newState.movies.find((item) => item.id === action.payload)) {
+        isOnList = newState.movies.find((item) => item.id === action.payload).my_list;
+        newState.movies.find((item) => item.id === action.payload).my_list = !isOnList;
+      }
+      if (newState.tvs.find((item) => item.id === action.payload)) {
+        isOnList = newState.tvs.find((item) => item.id === action.payload).my_list;
+        newState.tvs.find((item) => item.id === action.payload).my_list = !isOnList;
+      }
       return {
         ...newState,
       };

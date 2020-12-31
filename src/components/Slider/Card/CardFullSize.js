@@ -74,6 +74,7 @@ const CardFullSize = () => {
     <>
       {isOpen && (
         <StyledCardFullSize>
+          {console.log(movie)}
           {movie && (
             <Container ref={outsideRef}>
               <StyledCardBackImg src={movie.img} alt={movie.title} />

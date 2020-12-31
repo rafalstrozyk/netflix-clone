@@ -14,17 +14,16 @@ const Home = () => {
           <Bilboard movies={state.movies[0].movies} />
           <SliderGroup>
             {state.movies.map((item) => (
-              <RowSlider title={item.title} href="/" movies={item.movies} />
+              <RowSlider key={item.id} title={item.title} href="/" movies={item.movies} />
             ))}
+            {state.tvs.length > 0 && (
+              <>
+                {state.tvs.map((item) => (
+                  <RowSlider key={item.id} title={item.title} href="/" tvs={item.tvs} />
+                ))}
+              </>
+            )}
           </SliderGroup>
-
-          {/* <SliderGroup>
-            
-            <RowSlider title="Consumer Test" href="/" movies={state.movies} />
-            <RowSlider title="Consumer Test" href="/" movies={state.movies} />
-            <RowSlider title="Consumer Test" href="/" movies={state.movies} />
-            <RowSlider title="Consumer Test" href="/" movies={state.movies} />
-          </SliderGroup> */}
         </>
       ) : (
         <p>Loading...</p>

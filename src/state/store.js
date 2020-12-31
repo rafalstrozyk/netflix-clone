@@ -4,6 +4,7 @@ import Reducer from 'state/reducer';
 
 const initialState = {
   movies: [],
+  tvs: [],
   movie: {},
   movieIsOpen: false,
   searchString: '',
