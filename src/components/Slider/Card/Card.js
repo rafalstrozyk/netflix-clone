@@ -94,9 +94,8 @@ const StyledCard = styled.div`
   }
 `;
 
-const Card = ({ movie, tv, width }) => {
+const Card = ({ content, width }) => {
   const { dispatch } = useContext(Context);
-  let data;
   function maxWords(str) {
     const words = str.split(' ');
     const newWords = [];
@@ -109,24 +108,17 @@ const Card = ({ movie, tv, width }) => {
   }
 
   function handleAddToMyList() {
-    dispatch({ type: 'ADD_MY_LIST', payload: data.id });
+    dispatch({ type: 'ADD_MY_LIST', payload: content.id });
   }
 
   function handleIsOpen() {
-    dispatch({ type: 'SET_MOVIE', payload: data });
+    dispatch({ type: 'SET_MOVIE', payload: content });
     dispatch({ type: 'SET_IS_OPEN', payload: true });
-  }
-
-  if (movie) {
-    data = movie;
-  }
-  if (tv) {
-    data = tv;
   }
 
   return (
     <>
-      {movie || tv ? (
+      {content ? (
         <StyledCard style={{ width: `${width}%` }}>
           <div className="shadow">
             <div
@@ -136,15 +128,15 @@ const Card = ({ movie, tv, width }) => {
               role="button"
               tabIndex="0"
             >
-              <img src={data.img} className="back-image" alt={data.title} />
+              <img src={content.img} className="back-image" alt={content.title} />
             </div>
             <div className="card-back">
               <div className="header">
-                <Header as="h4">{data.title}</Header>
+                <Header as="h4">{content.title}</Header>
               </div>
 
               <div className="overview">
-                <p>{maxWords(data.overview)}</p>
+                <p>{maxWords(content.overview)}</p>
               </div>
 
               <div className="buttons-group">
@@ -152,7 +144,7 @@ const Card = ({ movie, tv, width }) => {
                   <PlayIcon />
                 </ButtonRoundIcon>
                 <ButtonRoundIcon onClick={handleAddToMyList} secondary>
-                  {data.my_list ? <CheckmarkIcon /> : <PlusIcon />}
+                  {content.my_list ? <CheckmarkIcon /> : <PlusIcon />}
                 </ButtonRoundIcon>
                 <ButtonRoundIcon secondary>
                   <ThumbsUpIcon />
@@ -170,17 +162,15 @@ const Card = ({ movie, tv, width }) => {
 };
 
 Card.propTypes = {
-  movie: PropTypes.objectOf(
+  content: PropTypes.objectOf(
     PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.bool]),
   ),
-  tv: PropTypes.objectOf(PropTypes.oneOfType([PropTypes.number, PropTypes.string, PropTypes.bool])),
   width: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
 };
 
 Card.defaultProps = {
   width: '100px',
-  movie: null,
-  tv: null,
+  content: null,
 };
 
 export default Card;

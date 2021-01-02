@@ -9,20 +9,13 @@ const Home = () => {
   const { state } = useContext(Context);
   return (
     <>
-      {state.movies.length > 0 ? (
+      {state.content.length > 0 ? (
         <>
-          <Bilboard movies={state.movies[0].movies} />
+          <Bilboard movies={state.content[0].content} />
           <SliderGroup>
-            {state.movies.map((item) => (
-              <RowSlider key={item.id} title={item.title} href="/" movies={item.movies} />
+            {state.content.map((item) => (
+              <RowSlider key={item.id} title={item.title} href="/" content={item.content} />
             ))}
-            {state.tvs.length > 0 && (
-              <>
-                {state.tvs.map((item) => (
-                  <RowSlider key={item.id} title={item.title} href="/" tvs={item.tvs} />
-                ))}
-              </>
-            )}
           </SliderGroup>
         </>
       ) : (

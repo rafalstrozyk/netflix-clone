@@ -16,20 +16,14 @@ const Cards = styled.div`
   white-space: nowrap;
 `;
 
-const Slider = ({ movies, tvs }) => {
+const Slider = ({ content }) => {
   const [sliderHasMoved, setSliderHasMoved] = useState(false);
   const [sliderMoveDirection, setSliderMoveDirection] = useState(null);
   const [sliderMoving, setSliderMoving] = useState(false);
   const [movePercentage, setMovePercentage] = useState(0);
   const [lowestVisibleIndex, setLowestVisibleIndex] = useState(0);
   const [itemsInRow, setItemsInRow] = useState(5);
-  let totalItems;
-  if (movies.length > 0) {
-    totalItems = movies.length;
-  }
-  if (tvs.length > 0) {
-    totalItems = tvs.length;
-  }
+  const totalItems = content.length;
 
   // alter number of items in row on window resize
   const handleWindowResize = () => {
@@ -51,7 +45,7 @@ const Slider = ({ movies, tvs }) => {
     };
   });
 
-  // if (!movies.length) return null;
+  if (!content.length) return null;
 
   // render the slider contents
   const renderSliderContent = () => {
@@ -104,19 +98,10 @@ const Slider = ({ movies, tvs }) => {
 
     const sliderContents = [];
 
-    if (movies.length > 0) {
-      for (const index of combinedIndex) {
-        sliderContents.push(
-          <Card width={`${93 / itemsInRow}`} movie={movies[index]} index={index} key={index} />,
-        );
-      }
-    }
-    if (tvs.length > 0) {
-      for (const index of combinedIndex) {
-        sliderContents.push(
-          <Card width={`${93 / itemsInRow}`} tv={tvs[index]} index={index} key={index} />,
-        );
-      }
+    for (const index of combinedIndex) {
+      sliderContents.push(
+        <Card width={`${93 / itemsInRow}`} content={content[index]} index={index} key={index} />,
+      );
     }
 
     // adds empty divs to take up appropriate spacing when slider at initial position
@@ -226,12 +211,10 @@ const Slider = ({ movies, tvs }) => {
 };
 
 Slider.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object),
-  tvs: PropTypes.arrayOf(PropTypes.object),
+  content: PropTypes.arrayOf(PropTypes.object),
 };
 Slider.defaultProps = {
-  movies: [],
-  tvs: [],
+  content: [],
 };
 
 export default Slider;

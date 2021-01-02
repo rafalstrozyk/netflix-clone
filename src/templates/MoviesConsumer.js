@@ -7,8 +7,8 @@ const MoviesConsumer = ({ children }) => {
   const { dispatch } = useContext(Context);
 
   useEffect(() => {
-    moviesLoader().then((data) => dispatch({ type: 'SET_MOVIES', payload: data }));
-    tvLoader().then((data) => dispatch({ type: 'SET_TVS', payload: data }));
+    tvLoader().then((data) => dispatch({ type: 'SET_CONTENT', payload: data }));
+    moviesLoader().then((data) => dispatch({ type: 'SET_CONTENT', payload: data }));
   }, []);
 
   return <>{children}</>;

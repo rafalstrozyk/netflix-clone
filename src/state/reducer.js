@@ -1,7 +1,13 @@
 const Reducer = (state, action) => {
-  const newState = state;
+  let newContent;
   let isOnList;
+  const arr = [];
   switch (action.type) {
+    case 'SET_CONTENT':
+      return {
+        ...state,
+        content: [...action.payload, ...state.content],
+      };
     case 'SET_MOVIES':
       return {
         ...state,
@@ -28,16 +34,20 @@ const Reducer = (state, action) => {
         searchString: action.payload,
       };
     case 'ADD_MY_LIST':
-      if (newState.movies.find((item) => item.id === action.payload)) {
-        isOnList = newState.movies.find((item) => item.id === action.payload).my_list;
-        newState.movies.find((item) => item.id === action.payload).my_list = !isOnList;
-      }
-      if (newState.tvs.find((item) => item.id === action.payload)) {
-        isOnList = newState.tvs.find((item) => item.id === action.payload).my_list;
-        newState.tvs.find((item) => item.id === action.payload).my_list = !isOnList;
-      }
+      state.content.forEach((content) => {
+        arr.push(...content.content);
+      });
+      isOnList = arr.find((item) => item.id === action.payload).my_list;
+
+      state.content.forEach((content) => {
+        newContent = content;
+        if (newContent.content.find((item) => item.id === action.payload)) {
+          newContent.content.find((item) => item.id === action.payload).my_list = !isOnList;
+        }
+      });
+
       return {
-        ...newState,
+        ...state,
       };
     default:
       return state;

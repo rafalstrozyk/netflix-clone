@@ -10,10 +10,15 @@ function useQuery() {
 }
 
 const searchResults = (state, query) => {
-  const newArray = state.movies.filter((item) => {
-    return item.title.toLowerCase().indexOf(query.get('search').toLowerCase()) >= 0;
+  const resultsArray = [];
+  state.content.forEach((contentArr) => {
+    const newArray = contentArr.content.filter((item) => {
+      return item.title.toLowerCase().indexOf(query.get('search').toLowerCase()) >= 0;
+    });
+    resultsArray.push(...newArray);
+    return newArray;
   });
-  return newArray;
+  return resultsArray;
 };
 
 const StyledSearch = styled.div`
@@ -26,6 +31,9 @@ const StyledSearch = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    > * {
+      margin-bottom: 20px;
+    }
   }
 `;
 
@@ -38,7 +46,7 @@ const Search = () => {
       <Header as="h2">Search: {query.get('search')}</Header>
       <div className="container">
         {searchResults(state, query).map((item) => (
-          <Card movie={item} width="16.5" key={item.id} />
+          <Card content={item} width="16.5" key={item.id} />
         ))}
       </div>
     </StyledSearch>

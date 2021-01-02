@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 import Reducer from 'state/reducer';
 
 const initialState = {
-  movies: [],
-  tvs: [],
+  content: [],
   movie: {},
   movieIsOpen: false,
   searchString: '',

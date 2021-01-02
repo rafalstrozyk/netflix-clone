@@ -26,12 +26,14 @@ export async function moviesLoader() {
             id: item.id,
             img: `https://image.tmdb.org/t/p/original${item.poster_path}`,
             my_list: false,
+            type: 'movie',
           };
           newArray.push(newItem);
         });
         moviesData.push({
           title: `Popular movies ${index + 1}`,
-          movies: newArray,
+          content: newArray,
+          type: 'movies',
         });
       });
       return moviesData;
@@ -55,12 +57,14 @@ export async function tvLoader() {
             id: item.id,
             img: `https://image.tmdb.org/t/p/original${item.poster_path}`,
             my_list: false,
+            type: 'tv',
           };
           newArray.push(newItem);
         });
         tvsData.push({
           title: `Popular tv series ${index + 1}`,
-          tvs: newArray,
+          content: newArray,
+          type: 'tvs',
         });
       });
       return tvsData;

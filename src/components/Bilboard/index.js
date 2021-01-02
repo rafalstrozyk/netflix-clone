@@ -61,10 +61,12 @@ const Bilboard = ({ movies }) => {
     overview: '',
     img: '',
   };
-  if (movies.length > 0) {
-    movie.title = movies[0].title;
-    movie.overview = movies[0].overview;
-    movie.img = movies[0].img;
+  if (movies) {
+    if (movies.length > 0) {
+      movie.title = movies[0].title;
+      movie.overview = movies[0].overview;
+      movie.img = movies[0].img;
+    }
   }
 
   return (
