@@ -27,6 +27,7 @@ export async function moviesLoader() {
             img: `https://image.tmdb.org/t/p/original${item.poster_path}`,
             my_list: false,
             type: 'movie',
+            new: false,
           };
           newArray.push(newItem);
         });
@@ -58,6 +59,7 @@ export async function tvLoader() {
             img: `https://image.tmdb.org/t/p/original${item.poster_path}`,
             my_list: false,
             type: 'tv',
+            new: false,
           };
           newArray.push(newItem);
         });
@@ -68,6 +70,68 @@ export async function tvLoader() {
         });
       });
       return tvsData;
+    });
+
+    return response;
+  } catch (err) {
+    return err;
+  }
+}
+
+export async function newMoviesLoader() {
+  try {
+    const response = await axiosCli.get(`/movie/top_rated?${key}`).then((res) => {
+      const moviesData = [];
+      const newArray = [];
+      res.data.results.forEach((item) => {
+        const newItem = {
+          title: item.title,
+          overview: item.overview,
+          id: item.id,
+          img: `https://image.tmdb.org/t/p/original${item.poster_path}`,
+          my_list: false,
+          type: 'movie',
+          new: true,
+        };
+        newArray.push(newItem);
+      });
+      moviesData.push({
+        title: `New movies`,
+        content: newArray,
+        type: 'movies',
+      });
+      return moviesData;
+    });
+
+    return response;
+  } catch (err) {
+    return err;
+  }
+}
+
+export async function newTvsLoader() {
+  try {
+    const response = await axiosCli.get(`/tv/top_rated?${key}`).then((res) => {
+      const moviesData = [];
+      const newArray = [];
+      res.data.results.forEach((item) => {
+        const newItem = {
+          title: item.name,
+          overview: item.overview,
+          id: item.id,
+          img: `https://image.tmdb.org/t/p/original${item.poster_path}`,
+          my_list: false,
+          type: 'tv',
+          new: true,
+        };
+        newArray.push(newItem);
+      });
+      moviesData.push({
+        title: `New tvs`,
+        content: newArray,
+        type: 'tvs',
+      });
+      return moviesData;
     });
 
     return response;

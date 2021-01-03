@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     body {
         font-size: 1.6rem;
         overflow-x: hidden;
-        margin: 0;
+        margin: 0 0 250px 0;
         padding: 0;
         font-weight: 300;
         display: block;
