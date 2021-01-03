@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Card from 'components/Slider/Card/Card';
-import SliderControl from 'components/Slider/SliderControl/SliderControl';
+import SliderControl from 'components/Slider/SliderControl';
 
 const StyledSlider = styled.div`
   padding: 0 4%;

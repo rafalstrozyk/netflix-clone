@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Slider from 'components/Slider/Slider';
+import Slider from 'components/Slider';
 import RowHeader from 'components/Headers/RowHeader';
 import styled from 'styled-components';
 

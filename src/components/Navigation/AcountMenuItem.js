@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import UserAvatar from 'components/UserAvatar/UserAvatar';
+import UserAvatar from 'components/UserAvatar';
 import avatarImage from 'assets/images/user_avatar.jpg';
 import UserDropDown from 'components/Navigation/UserDropDown';
 import TransitionTemplate from 'templates/TransitionTemplate';

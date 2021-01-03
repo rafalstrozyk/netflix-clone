@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Link from 'components/Link/Link';
-import UserAvatar from 'components/UserAvatar/UserAvatar';
+import Link from 'components/Link';
+import UserAvatar from 'components/UserAvatar';
 import avatarImage from 'assets/images/user_avatar.jpg';
 
 const StyledUserDropDown = styled.div`

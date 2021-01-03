@@ -1,10 +1,12 @@
-import axiosCli from 'axios/axios';
+import axiosCli from 'axios/axios'; // my axios client
 import axios from 'axios';
 
 require('dotenv').config();
 
+// key code
 const key = `api_key=${process.env.REACT_APP_API_KEY}`;
 
+// generate array url witch page number
 function urlPages(url, pages) {
   const array = [];
   for (let i = 1; i <= pages; i++) {
@@ -13,6 +15,7 @@ function urlPages(url, pages) {
   return array;
 }
 
+// load x pages movies
 export async function moviesLoader() {
   try {
     const response = await axios.all(urlPages(`/movie/popular?${key}`, 5)).then((responseArr) => {
@@ -45,6 +48,8 @@ export async function moviesLoader() {
     return err;
   }
 }
+
+// load x pages tvs
 export async function tvLoader() {
   try {
     const response = await axios.all(urlPages(`/tv/popular?${key}`, 5)).then((responseArr) => {
@@ -78,6 +83,7 @@ export async function tvLoader() {
   }
 }
 
+// load movies witch new status
 export async function newMoviesLoader() {
   try {
     const response = await axiosCli.get(`/movie/top_rated?${key}`).then((res) => {
@@ -109,6 +115,7 @@ export async function newMoviesLoader() {
   }
 }
 
+// load tvs witch new status
 export async function newTvsLoader() {
   try {
     const response = await axiosCli.get(`/tv/top_rated?${key}`).then((res) => {

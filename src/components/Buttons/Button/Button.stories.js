@@ -1,5 +1,5 @@
 import React from 'react';
-import ButtonPrimary from 'components/Buttons/Button/Button';
+import ButtonPrimary from 'components/Buttons/Button';
 // import { ReactComponent as BellIcon } from 'assets/icons/bell.svg';
 import { ReactComponent as PlayIcon } from 'assets/icons/controller-play.svg';
 // import { ReactComponent as CircleIcon } from 'assets/icons/info-with-circle.svg';

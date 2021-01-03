@@ -2,7 +2,7 @@ import React, { useState, createRef, useContext } from 'react';
 import styled from 'styled-components';
 import TransitionTemplate from 'templates/TransitionTemplate';
 import { Context } from 'state/store';
-import ButtonIcon from 'components/Buttons/ButtonIcon/ButtonIcon';
+import ButtonIcon from 'components/Buttons/ButtonIcon';
 import { ReactComponent as SearchIocon } from 'assets/icons/magnifying-glass.svg';
 import { useOutsideAlerter } from 'hooks/useOutside';
 

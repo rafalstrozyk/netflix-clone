@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Button from 'components/Buttons/Button/Button';
+import Button from 'components/Buttons/Button';
 import { ReactComponent as PlayIcon } from 'assets/icons/controller-play.svg';
 import { ReactComponent as InfoIcon } from 'assets/icons/info-with-circle.svg';
 

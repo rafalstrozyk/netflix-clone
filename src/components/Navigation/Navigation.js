@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import NavigationItem from 'components/Navigation/NavItem';
-import ButtonIcon from 'components/Buttons/ButtonIcon/ButtonIcon';
-import Logo from 'components/Logo/Logo';
+import ButtonIcon from 'components/Buttons/ButtonIcon';
+import Logo from 'components/Logo';
 import AcountMenuItem from 'components/Navigation/AcountMenuItem';
 import Search from 'components/Navigation/Search';
 import { ReactComponent as BellIcon } from 'assets/icons/bell.svg';
