@@ -8,6 +8,7 @@ import { ReactComponent as PlayIcon } from 'assets/icons/controller-play.svg';
 import { ReactComponent as PlusIcon } from 'assets/icons/plus.svg';
 import { ReactComponent as ThumbsDownIcon } from 'assets/icons/thumbs-down.svg';
 import { ReactComponent as ThumbsUpIcon } from 'assets/icons/thumbs-up.svg';
+import { ReactComponent as CheckmarkIcon } from 'assets/icons/checkmark.svg';
 
 const StyledCardFullSize = styled.div`
   position: fixed;
@@ -66,6 +67,9 @@ const CardFullSize = () => {
     setIsOpen(value);
   }
   useOutsideAlerter(outsideRef, handlerIsOpen);
+  function handleAddToMyList() {
+    dispatch({ type: 'ADD_MY_LIST', payload: movie.id });
+  }
 
   useEffect(() => {
     setIsOpen(movieIsOpen);
@@ -89,8 +93,8 @@ const CardFullSize = () => {
                   <ButtonRoundIcon>
                     <PlayIcon />
                   </ButtonRoundIcon>
-                  <ButtonRoundIcon secondary>
-                    <PlusIcon />
+                  <ButtonRoundIcon onClick={handleAddToMyList} secondary>
+                    {movie.my_list ? <CheckmarkIcon /> : <PlusIcon />}
                   </ButtonRoundIcon>
                   <ButtonRoundIcon secondary>
                     <ThumbsUpIcon />
